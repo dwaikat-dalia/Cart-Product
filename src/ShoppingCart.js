@@ -1,11 +1,10 @@
 import React from 'react'
+import '../src/shoppingcart.css';
 import product1 from '../src/images/p (1).jpg';
-import '../src/product.css';
 import product2 from '../src/images/p (2).jpg';
 import product3 from '../src/images/p (3).jpg';
 import product4 from '../src/images/p (4).jpg';
 import product5 from '../src/images/p (5).jpg';
-
 
 let products = [
     {image:product1,
@@ -30,37 +29,29 @@ let products = [
         
 
 ];
-function Product() {
- 
-return (<div className='productContent'>
-
-<h1>Products</h1>
-<hr/>
-<div className='products'>
-    
-{ products.map((product,index)=>{
- return <Product1  key={index} image={product.image} name={product.name} price={product.price} />;
-    })
-    }
-</div>
-</div>
-
-
-);
-
+function ShoppingCart() {
+  return (
+    <div className='cart'>
+        <h1>Shopping Cart</h1>
+        <hr/>
+{
+    products.map((product,index)=>{
+      return(  product.inCart && 
+  <div key={index} className='product'> 
+          <h2>{product.name}</h2>
+          <p>{product.price}</p>
+          <button>Remove</button>
+        </div>
+    );})
+       
+   
 }
-function Product1({image,name, price}){
-return (
-    <div className='pt'>
-     <img src={image}/>
-      <h2>{name}</h2>
-      <p>{price}</p>
-      <BtnCart/>
-    </div>
-);
+
+       
+        <hr/>
+        <p>Total: 70.00$</p>
+      </div>
+  )
 }
-function BtnCart(){
-    return <button>Add to Cart</button>
-;
-}
-export default Product
+
+export default ShoppingCart

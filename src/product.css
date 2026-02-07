@@ -12,24 +12,27 @@ button:hover{
     box-shadow: 2px 2px 2px rgb(197, 83, 182);
 }
 .productContent{
-    width: 50%;
-    height: 100%;
+    text-align: center;
+    width: 70%;
+     height: fit-content;
+         background-color: rgba(255, 192, 203, 0.616);
+
 }
 .products{
-    background-color: rgba(255, 192, 203, 0.616);
     padding: 10px;
     height: 80vh;
- overflow: scroll;
+ overflow-y: scroll;
 
     display:grid ;
-    grid-template-columns: repeat(auto-fill,minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fill,minmax(200px, 1fr));
     gap: 5px;
 }
 .pt{
-    padding: 3px;
+    padding: 10px;
     width: 150px;
     height: fit-content;
     background-color: white;
+    text-align: center;
 }
 .pt:hover{
     border: 0.5px solid palevioletred;

@@ -1,0 +1,32 @@
+.cart{
+    text-align: center;
+   background-color: rgb(104, 102, 102);
+    width: 30%;
+   color: white;
+    height: 100vh;
+}
+.product{
+   
+    padding: 5px;
+    display: flex;
+    justify-content: space-evenly;
+    
+}
+.product:hover{
+    background-color: whitesmoke;
+    color: black;
+}
+.product>h2{
+    font-size: 15px;
+    margin: 3px;
+}
+.product>p{
+     font-size: 15px;
+    margin: 3px;
+}
+.product>button{
+    padding: 5px 13px;
+    height: fit-content;
+    color: white;
+    
+}
