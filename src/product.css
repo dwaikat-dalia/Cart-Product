@@ -1,0 +1,47 @@
+body{
+    
+}
+button{
+background-color: palevioletred;
+border-radius: 30px;
+padding:8px 15px;
+border: 0.5px solid palevioletred ;
+}
+button:hover{
+    
+    box-shadow: 2px 2px 2px rgb(197, 83, 182);
+}
+.productContent{
+    width: 50%;
+    height: 100%;
+}
+.products{
+    background-color: rgba(255, 192, 203, 0.616);
+    padding: 10px;
+    height: 80vh;
+ overflow: scroll;
+
+    display:grid ;
+    grid-template-columns: repeat(auto-fill,minmax(150px, 1fr));
+    gap: 5px;
+}
+.pt{
+    padding: 3px;
+    width: 150px;
+    height: fit-content;
+    background-color: white;
+}
+.pt:hover{
+    border: 0.5px solid palevioletred;
+}
+img{
+    width: 150px;
+    height: 100px;
+}
+.pt>h2{
+    font-size: 20px;
+    margin: 2px;
+}
+.pt>p{
+    margin: 2px;
+}
