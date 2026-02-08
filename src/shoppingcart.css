@@ -1,15 +1,21 @@
+.groupProducts{
+   background-color: rgb(172, 168, 168);
+    overflow-y: scroll;
+    height: 30vh;
+}
 .cart{
     text-align: center;
    background-color: rgb(104, 102, 102);
     width: 30%;
    color: white;
-    height: 100vh;
+   
 }
 .product{
    
     padding: 5px;
     display: flex;
     justify-content: space-evenly;
+ 
     
 }
 .product:hover{
@@ -29,4 +35,19 @@
     height: fit-content;
     color: white;
     
+}
+
+/**Checkout*/
+.Form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.Form>div{
+    padding: 5px;
+    
+}
+.Form>button{
+    margin: 10px;
+    color: white;
 }

@@ -34,6 +34,7 @@ function ShoppingCart() {
     <div className='cart'>
         <h1>Shopping Cart</h1>
         <hr/>
+        <div className='groupProducts'>
 {
     products.map((product,index)=>{
       return(  product.inCart && 
@@ -47,11 +48,39 @@ function ShoppingCart() {
    
 }
 
+        </div>
+
+
        
-        <hr/>
+        
         <p>Total: 70.00$</p>
+       <hr/>
+        <Checkout/>
       </div>
   )
+}
+function Checkout(){
+    return (
+            <div>
+                <h1>Checkout</h1>
+               
+                <form className='Form'>
+                    <div>
+                        <label>Name </label>
+                    <input/>
+                    </div>
+                    <div>
+                        <label>Email </label>
+                    <input/>
+                    </div>
+                    
+                    <button type='submit'>Place Order</button>
+                    </form>              
+            </div>
+
+
+    );
+
 }
 
 export default ShoppingCart
