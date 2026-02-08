@@ -1,45 +1,17 @@
 import React from 'react'
-import product1 from '../src/images/p (1).jpg';
 import '../src/product.css';
-import product2 from '../src/images/p (2).jpg';
-import product3 from '../src/images/p (3).jpg';
-import product4 from '../src/images/p (4).jpg';
-import product5 from '../src/images/p (5).jpg';
 
 
-let products = [
-    {image:product1,
-        name :"A",
-        price :"70.00$",
-        inCart:false
-    },
-    {image:product2,
-        name :"B",
-        price :"60.00$",
-        inCart:true
-    },{image:product3,
-        name :"C",
-        price :"20.00$",inCart:false
-    },{image:product4,
-        name :"D",
-        price :"120.00$",inCart:false
-    },{image:product5,
-        name :"E",
-        price :"25.00$",inCart:true
-    }
-        
+function Product({data,dispatch}) {
 
-];
-function Product() {
- 
 return (<div className='productContent'>
 
 <h1>Products</h1>
 <hr/>
 <div className='products'>
     
-{ products.map((product,index)=>{
- return <Product1  key={index} image={product.image} name={product.name} price={product.price} />;
+{ data.map((product,index)=>{
+ return <Product1   index={index} key={index} image={product.image} dispatch={dispatch} name={product.name} price={product.price} />;
     })
     }
 </div>
@@ -47,20 +19,20 @@ return (<div className='productContent'>
 
 
 );
-
 }
-function Product1({image,name, price}){
+
+function Product1({image,name, price,index,dispatch}){
 return (
     <div className='pt'>
      <img src={image}/>
       <h2>{name}</h2>
-      <p>{price}</p>
-      <BtnCart/>
+      <p>{price}$</p>
+      <BtnCart index={index} dispatch={dispatch}/>
     </div>
 );
 }
-function BtnCart(){
-    return <button>Add to Cart</button>
+function BtnCart({index,dispatch}){
+    return <button onClick={()=>{dispatch({type:"add",index});}}>Add to Cart</button>
 ;
 }
 export default Product

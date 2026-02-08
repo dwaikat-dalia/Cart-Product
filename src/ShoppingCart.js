@@ -1,47 +1,23 @@
 import React from 'react'
 import '../src/shoppingcart.css';
-import product1 from '../src/images/p (1).jpg';
-import product2 from '../src/images/p (2).jpg';
-import product3 from '../src/images/p (3).jpg';
-import product4 from '../src/images/p (4).jpg';
-import product5 from '../src/images/p (5).jpg';
+import { useState } from 'react';
 
-let products = [
-    {image:product1,
-        name :"A",
-        price :"70.00$",
-        inCart:false
-    },
-    {image:product2,
-        name :"B",
-        price :"60.00$",
-        inCart:true
-    },{image:product3,
-        name :"C",
-        price :"20.00$",inCart:false
-    },{image:product4,
-        name :"D",
-        price :"120.00$",inCart:false
-    },{image:product5,
-        name :"E",
-        price :"25.00$",inCart:true
-    }
-        
-
-];
-function ShoppingCart() {
+function ShoppingCart({data, dispatch}) {
+    let total=0;
   return (
     <div className='cart'>
         <h1>Shopping Cart</h1>
         <hr/>
         <div className='groupProducts'>
 {
-    products.map((product,index)=>{
+    data.map((product,index)=>{
       return(  product.inCart && 
   <div key={index} className='product'> 
           <h2>{product.name}</h2>
-          <p>{product.price}</p>
-          <button>Remove</button>
+          <p>{product.price}$</p>
+          <button onClick={()=>{
+            dispatch({type:"remove", index})
+          }}>Remove</button>
         </div>
     );})
        
@@ -53,13 +29,25 @@ function ShoppingCart() {
 
        
         
-        <p>Total: 70.00$</p>
+        <p>Total: {Calc_total(total,data)}$</p>
        <hr/>
-        <Checkout/>
+        <Checkout dispatch={dispatch}/>
       </div>
   )
 }
-function Checkout(){
+function Calc_total(total,data){
+    data.map(
+        (d)=>{
+            if(d.inCart){
+                total = total + d.price;
+            }
+        }
+    );
+    return total;
+}
+function Checkout({dispatch}){
+   
+        let [form , setForm] =useState({name:"",email:""})
     return (
             <div>
                 <h1>Checkout</h1>
@@ -67,20 +55,25 @@ function Checkout(){
                 <form className='Form'>
                     <div>
                         <label>Name </label>
-                    <input/>
+                    <input value={form.name} onChange={(e)=>{setForm({...form , name:e.target.value});}}/>
                     </div>
                     <div>
                         <label>Email </label>
-                    <input/>
+                    <input value={form.email} onChange={(e)=>{setForm({...form , email:e.target.value});}}/>
                     </div>
-                    
-                    <button type='submit'>Place Order</button>
+                   
+                    <button  onClick={(e)=>handleSubmit(e)}>Place Order</button>
+
+                     
                     </form>              
             </div>
 
 
     );
-
+ function handleSubmit(e){
+      e.preventDefault(); 
+   alert(`Your order has been sent, ${form.name} (${form.email})!`);
+}
 }
 
 export default ShoppingCart
