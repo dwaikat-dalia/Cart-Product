@@ -1,63 +1,28 @@
-import React from 'react'
-import product2 from '../src/images/p (2).jpg';
-import product3 from '../src/images/p (3).jpg';
-import product4 from '../src/images/p (4).jpg';
-import product5 from '../src/images/p (5).jpg';
-import product1 from '../src/images/p (1).jpg';
+
 import { createContext } from 'react';
-export let products = [
-    {
-        image: product1,
-        name: "A",
-        price: 70,
-        inCart: false
-    },
-    {
-        image: product2,
-        name: "B",
-        price: 60,
-        inCart: true
-    }, {
-        image: product3,
-        name: "C",
-        price: 20, inCart: false
-    }, {
-        image: product4,
-        name: "D",
-        price: 120, inCart: false
-    }, {
-        image: product5,
-        name: "E",
-        price: 25, inCart: true
-    }
-
-
-];
 export let productContext = createContext(null)
 export let dispatchContext = createContext(null);
+
 export function productsReducer(state, action) {
 
     switch (action.type) {
         case "add":
             {
-                let newState = state.map((product, index) => {
+                let newState = state.map((product) => {
 
-                    if (action.index === index) {
-
+                    if (action.id === product.id) {
                         return { ...product, inCart: true }
                     } else {
                         return product;
                     }
                 });
-
                 return newState;
-
             }
         case "remove":
             {
-                let newState = state.map((product, index) => {
+                let newState = state.map((product) => {
 
-                    if (action.index === index) {
+                    if (action.id === product.id) {
 
                         return { ...product, inCart: false }
                     } else {
@@ -68,6 +33,8 @@ export function productsReducer(state, action) {
                 return newState;
 
             }
+            case "set":  
+          return action.products.map(p => ({ ...p, inCart: false }));
 
         default: return state;
 

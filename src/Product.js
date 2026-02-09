@@ -12,7 +12,7 @@ function Product() {
         <div className='products'>
 
             {data.map((product, index) => {
-                return <Product1 index={index} key={index} image={product.image} name={product.name} price={product.price} />;
+                return <Product1  key={index} product={product} />;
             })
             }
         </div>
@@ -22,20 +22,20 @@ function Product() {
     );
 }
 
-function Product1({ image, name, price, index }) {
+function Product1({product }) {
     return (
         <div className='pt'>
-            <img src={image} alt={name} />
-            <h2>{name}</h2>
-            <p>{price}$</p>
-            <BtnCart index={index} />
+            <img src={product.image} alt={product.name} />
+            <h2>{product.name.length > 20 ? product.name.slice(0, 20) + '...' : product.name}</h2>
+            <p>{product.price}$</p>
+            <BtnCart id={product.id} />
         </div>
     );
 }
-function BtnCart({ index }) {
+function BtnCart({ id }) {
     let dispatch = useContext(dispatchContext);
 
-    return <button onClick={() => { dispatch({ type: "add", index }); }}>Add to Cart</button>
+    return <button onClick={() => { dispatch({ type: "add", id: id }); }}>Add to Cart</button>
         ;
 }
 export default Product

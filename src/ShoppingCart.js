@@ -18,13 +18,13 @@ function ShoppingCart() {
             <hr />
             <div className='groupProducts'>
                 {
-                    data.map((product, index) => {
+                    data.map((product) => {
                         return (product.inCart &&
-                            <div key={index} className='product'>
+                            <div key={product.id} className='product'>
                                 <h2>{product.name}</h2>
                                 <p>{product.price}$</p>
                                 <button onClick={() => {
-                                    dispatch({ type: "remove", index })
+                                    dispatch({ type: "remove",id: product.id })
                                 }}>Remove</button>
                             </div>
                         );
@@ -81,9 +81,9 @@ function Checkout({ total }) {
     function handleSubmit(e) {
         e.preventDefault();
 
-        if (form.name != "" && form.email != "" && total != 0) {
+        if (form.name !== "" && form.email !== "" && total !== 0) {
             alert(`Your order has been sent, ${form.name} (${form.email})!`);
-        } else if (total == 0) {
+        } else if (total === 0) {
             alert(`Please fill your cart !${total}`);
         } else {
             alert(`Please insert name and email !`);

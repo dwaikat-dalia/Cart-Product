@@ -30,9 +30,12 @@ button:hover{
 .pt{
     padding: 10px;
     width: 150px;
-    height: fit-content;
+    height: 300px;
     background-color: white;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
 }
 .pt:hover{
     border: 0.5px solid palevioletred;
